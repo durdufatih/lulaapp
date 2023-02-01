@@ -21,6 +21,8 @@ final class LUListenViewModel{
         ListenModel(name: "mozart-serenade", image: "cartoon2", shownName: "Mozart Serenade"),
         ListenModel(name: "twinkle-twinkle-little-star", image: "cartoon1", shownName: "Twinkle Little Star"),
     ]
+    public var rangeOfTime = [0.0,300.0,600.0,900.0,1200.0,1500.0,1800.0,2100.0,2400.0,2700.0,3000.0]
+    public var rangeIndex = 0
     public var player: AVAudioPlayer!
     public var repeatCount = 0
     public var timeLenght = 0.0
@@ -46,6 +48,27 @@ final class LUListenViewModel{
         return player.isPlaying && player.duration != 0
     }
     
+    public func getRangeByIndex()-> Double{
+        return rangeOfTime[rangeIndex]
+    }
+    
+    public func increaseRangeIndex(){
+        if rangeIndex + 1 == 10 {
+            rangeIndex=0
+        }
+        else{
+            rangeIndex = rangeIndex+1
+        }
+    }
+    
+    public func resetTimeDatas(){
+        rangeIndex = 0
+        timeLenght = rangeOfTime[rangeIndex]
+        timer?.invalidate()
+        timer = nil
+        
+    }
+    
     
     public func setRepeatCount(count:Int){
         self.repeatCount = count
@@ -69,10 +92,8 @@ final class LUListenViewModel{
     }
     
     public func increaseTimeLength(){
-        if timeLenght == 300.0 * 8{
-            timeLenght = 0.0
-        }
-        timeLenght += 300.0
+        increaseRangeIndex()
+        timeLenght = rangeOfTime[rangeIndex]
     }
     
     public func checkTimeLengthIsZero()->Bool{

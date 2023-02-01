@@ -129,6 +129,8 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         }
         addCustomView(lulaText: item.shownName)
         vModel.startPlayer(path: path)
+        vModel.resetTimeDatas()
+        updateTimerLabel()
         countLabel.text = "0"
     }
     
@@ -168,7 +170,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @objc func buttonRepeatClicked(button: UIButton)  {
         vModel.clearTimerDataIfIsRunning()
+        vModel.resetTimeDatas()
         updateTimerLabel()
+        
         vModel.repeatCountCheckAtLimitOrIncrease(limit: 10)
         updateRepeater()
     }
