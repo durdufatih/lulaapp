@@ -25,6 +25,7 @@
 		3DC31BF5297B7FE7009ECE9B /* mozart-serenade.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DC31BED297B7FE7009ECE9B /* mozart-serenade.mp4 */; };
 		3DCD9C2729812C2D0067A64A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD9C2629812C2D0067A64A /* ColorExtension.swift */; };
 		3DCEA1522989D60200D4FDFD /* LUListenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEA1512989D60200D4FDFD /* LUListenViewModel.swift */; };
+		3DD2B2CC298AB0850005EE7B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DD2B2CC298AB0850005EE7B /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,6 +137,9 @@
 			dependencies = (
 			);
 			name = lulaapp;
+			packageProductDependencies = (
+				3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */,
+			);
 			productName = lulaapp;
 			productReference = 3DC31BC6297ACAD3009ECE9B /* lulaapp.app */;
 			productType = "com.apple.product-type.application";
@@ -163,6 +168,9 @@
 				Base,
 			);
 			mainGroup = 3DC31BBD297ACAD3009ECE9B;
+			packageReferences = (
+				3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = 3DC31BC7297ACAD3009ECE9B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -359,6 +367,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -387,6 +396,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -422,6 +432,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3DC31BBE297ACAD3009ECE9B /* Project object */;
 }

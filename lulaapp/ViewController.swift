@@ -7,11 +7,25 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
+
+
+enum AdIds : String {
+    /** REPLACE THE VALUES BY YOUR APP AND AD IDS **/
+    case appId       = "ca-app-pub-6063592974982071~6379577063" // app id
+    case banner      = "ca-app-pub-6063592974982071/6694517237" // test id
+    
+}
+let testDevices = [
+    "XX",   //iPhone 5s
+    "YY", // iPhone 6
+]
 
 class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,AVAudioPlayerDelegate {
 
     
     let vModel = LUListenViewModel()
+    var bannerView: GADBannerView!
 
     
     var customView : UIView = {
@@ -103,7 +117,28 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         listCell.dataSource = self
         listCell.delegate = self
         listCell.reloadData()
+        
+        
+        bannerView = GADBannerView(adSize: GADAdSizeBanner)
+        bannerView.adUnitID = AdIds.banner.rawValue
+        bannerView.rootViewController = self
+        addBannerViewToView(bannerView,bottomInt: -25)
+        bannerView.load(GADRequest())
+          
+        
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView,bottomInt:Float) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+       bannerView.tag = 200
+       view.addSubview(bannerView)
+        bannerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: CGFloat(bottomInt)).isActive = true
+       bannerView.heightAnchor.constraint(equalToConstant: 75).isActive = true
+       bannerView.leftAnchor.constraint(equalTo: self.view.leftAnchor,constant: 10).isActive = true
+       bannerView.rightAnchor.constraint(equalTo: self.view.rightAnchor,constant: -10).isActive = true
+      }
+    
+    
     
 
     
@@ -127,11 +162,15 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
            debugPrint("\(item.name) not found")
            return
         }
+        
         addCustomView(lulaText: item.shownName)
         vModel.startPlayer(path: path)
         vModel.resetTimeDatas()
         updateTimerLabel()
         countLabel.text = "0"
+        bannerView.rootViewController = self
+        addBannerViewToView(bannerView,bottomInt: -110)
+        bannerView.load(GADRequest())
     }
     
     
@@ -191,9 +230,9 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         self.view.addSubview(customView)
         
         customView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -25).isActive = true
-        customView.heightAnchor.constraint(equalToConstant: 75).isActive = true
-        customView.leftAnchor.constraint(equalTo: self.view.leftAnchor,constant: 10).isActive = true
-        customView.rightAnchor.constraint(equalTo: self.view.rightAnchor,constant: -10).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        customView.leftAnchor.constraint(equalTo: self.view.leftAnchor,constant: 5).isActive = true
+        customView.rightAnchor.constraint(equalTo: self.view.rightAnchor,constant: -5).isActive = true
         self.view.addSubview(label)
         label.text = lulaText
         label.bringSubviewToFront(customView)

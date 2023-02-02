@@ -2,10 +2,10 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1Hp-Yq-lgu">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,36 +33,42 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="9Vx-Pv-cfl" customClass="LUCollectionViewCell" customModule="lulaapp" customModuleProvider="target">
                                         <rect key="frame" x="20" y="0.0" width="170" height="139"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="oid-Uw-NN5">
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="139"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoon1" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-6Z-r8f">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="cartoon1" translatesAutoresizingMaskIntoConstraints="NO" id="vxF-6Z-r8f">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="103"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="170" id="DXd-BG-DEb"/>
                                                         <constraint firstAttribute="height" constant="103" id="uJP-Fs-nIJ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bx-dp-h9a">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Test" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3bx-dp-h9a">
                                                     <rect key="frame" x="0.0" y="110" width="170" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="29" id="jYl-EQ-95V"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="3bx-dp-h9a" secondAttribute="trailing" id="Mgp-6r-70c"/>
-                                                <constraint firstAttribute="trailing" secondItem="vxF-6Z-r8f" secondAttribute="trailing" id="QY7-9D-QxA"/>
-                                                <constraint firstAttribute="bottom" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="36" id="gYm-o5-UG7"/>
-                                                <constraint firstAttribute="bottom" secondItem="3bx-dp-h9a" secondAttribute="bottom" id="mR7-gs-zn0"/>
-                                                <constraint firstItem="3bx-dp-h9a" firstAttribute="leading" secondItem="oid-Uw-NN5" secondAttribute="leading" id="qvO-dR-4YX"/>
-                                                <constraint firstItem="3bx-dp-h9a" firstAttribute="top" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="7" id="w2l-9b-cH2"/>
-                                                <constraint firstItem="vxF-6Z-r8f" firstAttribute="top" secondItem="oid-Uw-NN5" secondAttribute="top" id="wls-Ol-O5Y"/>
-                                                <constraint firstItem="vxF-6Z-r8f" firstAttribute="leading" secondItem="oid-Uw-NN5" secondAttribute="leading" id="xWq-Kn-CMC"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="170" height="139"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="3bx-dp-h9a" secondAttribute="trailing" id="Mgp-6r-70c"/>
+                                            <constraint firstAttribute="trailing" secondItem="vxF-6Z-r8f" secondAttribute="trailing" id="QY7-9D-QxA"/>
+                                            <constraint firstItem="3bx-dp-h9a" firstAttribute="top" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="7" id="ZHb-hg-js5"/>
+                                            <constraint firstAttribute="bottom" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="36" id="gYm-o5-UG7"/>
+                                            <constraint firstAttribute="trailing" secondItem="3bx-dp-h9a" secondAttribute="trailing" id="hHZ-W0-uBV"/>
+                                            <constraint firstItem="3bx-dp-h9a" firstAttribute="leading" secondItem="9Vx-Pv-cfl" secondAttribute="leading" id="lKH-Xn-XuZ"/>
+                                            <constraint firstAttribute="bottom" secondItem="3bx-dp-h9a" secondAttribute="bottom" id="mR7-gs-zn0"/>
+                                            <constraint firstAttribute="bottom" secondItem="3bx-dp-h9a" secondAttribute="bottom" id="qMU-dF-bdo"/>
+                                            <constraint firstItem="3bx-dp-h9a" firstAttribute="leading" secondItem="9Vx-Pv-cfl" secondAttribute="leading" id="qvO-dR-4YX"/>
+                                            <constraint firstItem="3bx-dp-h9a" firstAttribute="top" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="7" id="w2l-9b-cH2"/>
+                                            <constraint firstItem="vxF-6Z-r8f" firstAttribute="top" secondItem="9Vx-Pv-cfl" secondAttribute="top" id="wls-Ol-O5Y"/>
+                                            <constraint firstItem="vxF-6Z-r8f" firstAttribute="leading" secondItem="9Vx-Pv-cfl" secondAttribute="leading" id="xWq-Kn-CMC"/>
+                                        </constraints>
                                         <connections>
                                             <outlet property="lulabyImage" destination="vxF-6Z-r8f" id="rll-0t-dsi"/>
                                             <outlet property="lulabyTitle" destination="3bx-dp-h9a" id="BFk-d4-Iwk"/>
