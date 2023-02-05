@@ -8,12 +8,14 @@
 import UIKit
 import AVFoundation
 import GoogleMobileAds
+import AudioToolbox
 
 
 enum AdIds : String {
     /** REPLACE THE VALUES BY YOUR APP AND AD IDS **/
     case appId       = "ca-app-pub-6063592974982071~6379577063" // app id
     case banner      = "ca-app-pub-6063592974982071/6694517237" // test id
+    case interstitial       = "ca-app-pub-3940256099942544/4411468910"
     
 }
 let testDevices = [
@@ -21,11 +23,11 @@ let testDevices = [
     "YY", // iPhone 6
 ]
 
-class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,AVAudioPlayerDelegate {
+class ViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,AVAudioPlayerDelegate, GADFullScreenContentDelegate{
 
     
     let vModel = LUListenViewModel()
-    var bannerView: GADBannerView!
+    private var interstitial: GADInterstitialAd!
 
     
     var customView : UIView = {
@@ -119,14 +121,30 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         listCell.reloadData()
         
         
-        bannerView = GADBannerView(adSize: GADAdSizeBanner)
-        bannerView.adUnitID = AdIds.banner.rawValue
-        bannerView.rootViewController = self
-        addBannerViewToView(bannerView,bottomInt: -25)
-        bannerView.load(GADRequest())
-          
         
     }
+    
+    /// Tells the delegate that the ad failed to present full screen content.
+     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
+       print("Ad did fail to present full screen content.")
+         print("Error: \(error.localizedDescription)")
+     }
+
+     /// Tells the delegate that the ad will present full screen content.
+     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+       print("Ad will present full screen content.")
+         vModel.player.pause()
+     }
+
+     /// Tells the delegate that the ad dismissed full screen content.
+     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+       print("Ad did dismiss full screen content.")
+         interstitial = nil
+         vModel.player.play()
+         
+     }
+    
+    
     
     func addBannerViewToView(_ bannerView: GADBannerView,bottomInt:Float) {
        bannerView.translatesAutoresizingMaskIntoConstraints = false
@@ -168,9 +186,6 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         vModel.resetTimeDatas()
         updateTimerLabel()
         countLabel.text = "0"
-        bannerView.rootViewController = self
-        addBannerViewToView(bannerView,bottomInt: -110)
-        bannerView.load(GADRequest())
     }
     
     
@@ -182,6 +197,11 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         if vModel.playerPlayingCheck() {
             button.setImage(UIImage(systemName: "stop.circle"), for: .normal)
             vModel.player.pause()
+            vModel.clearTimerDataIfIsRunning()
+            vModel.resetTimeDatas()
+            vModel.setRepeatCount(count: 0)
+            updateRepeater()
+            updateTimerLabel()
         }
         else{
             button.setImage(UIImage(systemName: "play.circle"), for: .normal)
@@ -192,6 +212,28 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     
     @objc func buttonTimerClicked(button: UIButton)  {
        
+         
+        if vModel.rangeIndex % 3 == 0{
+            vModel.player.play()
+            let request = GADRequest()
+            GADInterstitialAd.load(withAdUnitID:AdIds.interstitial.rawValue,
+                                   request: request,
+                                   completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
+            }
+            )
+            if interstitial != nil {
+                let root = UIApplication.shared.windows.first?.rootViewController
+                                   self.interstitial.present(fromRootViewController: root!)
+            } else {
+                print("Ad wasn't ready")
+            }
+        }
         if vModel.checkRepeatCountIsNotZero(){
             vModel.setRepeatCount(count: 0) 
             updateRepeater()
@@ -208,6 +250,27 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
     }
     
     @objc func buttonRepeatClicked(button: UIButton)  {
+        
+        if vModel.repeatCount % 3 == 0{
+            let request = GADRequest()
+            GADInterstitialAd.load(withAdUnitID:AdIds.interstitial.rawValue,request: request,
+                completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                interstitial = ad
+                interstitial?.fullScreenContentDelegate = self
+            }
+            )
+           
+            if interstitial != nil {
+                self.interstitial.present(fromRootViewController: self)
+            } else {
+                print("Ad wasn't ready")
+            }
+            vModel.player.play()
+        }
         vModel.clearTimerDataIfIsRunning()
         vModel.resetTimeDatas()
         updateTimerLabel()
@@ -215,6 +278,7 @@ class ViewController: UIViewController,UICollectionViewDelegate,UICollectionView
         vModel.repeatCountCheckAtLimitOrIncrease(limit: 10)
         updateRepeater()
     }
+
     
     func updateTimerLabel (){
         timerLabel.text = vModel.getTimerText()

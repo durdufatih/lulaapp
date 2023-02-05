@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D55FB1F298FEFE000097EC2 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 3D55FB1E298FEFE000097EC2 /* GoogleMobileAds */; };
 		3DC31BCA297ACAD3009ECE9B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC31BC9297ACAD3009ECE9B /* AppDelegate.swift */; };
 		3DC31BCC297ACAD3009ECE9B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC31BCB297ACAD3009ECE9B /* SceneDelegate.swift */; };
 		3DC31BCE297ACAD3009ECE9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DC31BCD297ACAD3009ECE9B /* ViewController.swift */; };
@@ -25,7 +26,6 @@
 		3DC31BF5297B7FE7009ECE9B /* mozart-serenade.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 3DC31BED297B7FE7009ECE9B /* mozart-serenade.mp4 */; };
 		3DCD9C2729812C2D0067A64A /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCD9C2629812C2D0067A64A /* ColorExtension.swift */; };
 		3DCEA1522989D60200D4FDFD /* LUListenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DCEA1512989D60200D4FDFD /* LUListenViewModel.swift */; };
-		3DD2B2CC298AB0850005EE7B /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3DD2B2CC298AB0850005EE7B /* GoogleMobileAds in Frameworks */,
+				3D55FB1F298FEFE000097EC2 /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +138,7 @@
 			);
 			name = lulaapp;
 			packageProductDependencies = (
-				3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */,
+				3D55FB1E298FEFE000097EC2 /* GoogleMobileAds */,
 			);
 			productName = lulaapp;
 			productReference = 3DC31BC6297ACAD3009ECE9B /* lulaapp.app */;
@@ -169,7 +169,7 @@
 			);
 			mainGroup = 3DC31BBD297ACAD3009ECE9B;
 			packageReferences = (
-				3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				3D55FB1D298FEFE000097EC2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 3DC31BC7297ACAD3009ECE9B /* Products */;
 			projectDirPath = "";
@@ -434,20 +434,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+		3D55FB1D298FEFE000097EC2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				kind = exactVersion;
+				version = 9.9.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3DD2B2CB298AB0850005EE7B /* GoogleMobileAds */ = {
+		3D55FB1E298FEFE000097EC2 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3DD2B2CA298AB0850005EE7B /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			package = 3D55FB1D298FEFE000097EC2 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
