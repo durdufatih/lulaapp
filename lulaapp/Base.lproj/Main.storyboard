@@ -22,7 +22,7 @@
                             </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GUT-fZ-eT6">
                                 <rect key="frame" x="0.0" y="103" width="393" height="749"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="3" minimumInteritemSpacing="3" id="5dF-Xo-gCU">
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5dF-Xo-gCU">
                                     <size key="itemSize" width="162" height="139"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -56,6 +56,7 @@
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
                                         <constraints>
                                             <constraint firstItem="vxF-6Z-r8f" firstAttribute="leading" secondItem="9Vx-Pv-cfl" secondAttribute="leading" id="8iU-yW-Clm"/>
                                             <constraint firstItem="3bx-dp-h9a" firstAttribute="leading" secondItem="9Vx-Pv-cfl" secondAttribute="leading" id="995-yK-Jl9"/>
@@ -66,6 +67,11 @@
                                             <constraint firstItem="3bx-dp-h9a" firstAttribute="top" secondItem="vxF-6Z-r8f" secondAttribute="bottom" constant="7" id="azu-RN-9gm"/>
                                             <constraint firstAttribute="bottom" secondItem="3bx-dp-h9a" secondAttribute="bottom" id="vVj-Bf-5PP"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <outlet property="lulabyImage" destination="vxF-6Z-r8f" id="rll-0t-dsi"/>
                                             <outlet property="lulabyTitle" destination="3bx-dp-h9a" id="BFk-d4-Iwk"/>
@@ -89,20 +95,7 @@
                             <constraint firstItem="GUT-fZ-eT6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="u29-JE-9M7"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose Lullaby" id="DCC-T7-CzY">
-                        <barButtonItem key="leftBarButtonItem" title="No Ads" image="nosign" catalog="system" id="A2n-rI-YvN">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="2xf-jN-Y6W" kind="show" id="Znh-u1-MRH"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="gear" catalog="system" style="plain" id="x8F-v6-hBa">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="2xf-jN-Y6W" kind="show" id="No7-EK-W0S"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Choose Lullaby" id="DCC-T7-CzY"/>
                     <connections>
                         <outlet property="listCell" destination="GUT-fZ-eT6" id="0mV-9m-nHx"/>
                     </connections>
@@ -110,34 +103,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="973.28244274809151" y="-2.1126760563380285"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tcN-Qi-D9z">
-            <objects>
-                <viewController id="2xf-jN-Y6W" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CPQ-yt-nYN">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Under The Contruction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AlG-el-ftW">
-                                <rect key="frame" x="73" y="411" width="247" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="e6e-IC-GN1"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="AlG-el-ftW" firstAttribute="centerX" secondItem="CPQ-yt-nYN" secondAttribute="centerX" id="bQ0-5d-sPQ"/>
-                            <constraint firstItem="AlG-el-ftW" firstAttribute="centerY" secondItem="CPQ-yt-nYN" secondAttribute="centerY" id="idM-mR-Utt"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="FQS-83-gts"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U3g-hr-C2a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2044" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="HLj-QM-FtY">
@@ -158,16 +123,14 @@
             <point key="canvasLocation" x="46.564885496183201" y="-2.1126760563380285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Znh-u1-MRH"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="backgroud" width="1920" height="1200"/>
         <image name="cartoon1" width="5000" height="4250"/>
-        <image name="gear" catalog="system" width="128" height="122"/>
-        <image name="nosign" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

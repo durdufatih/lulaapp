@@ -12,14 +12,14 @@ import AVFAudio
 final class LUListenViewModel{
     
     public var listenData:[ListenModel] = [
-        ListenModel(name: "baa-baa-black-sheep", image: "cartoon2", shownName: "Ba Black Sheep"),
-        ListenModel(name: "Baby-lullaby-music", image: "cartoon1", shownName: "Baby Lullaby Music"),
+        ListenModel(name: "baa-baa-black-sheep", image: "cartoon1", shownName: "Ba Black Sheep"),
+        ListenModel(name: "Baby-lullaby-music", image: "cartoon2", shownName: "Baby Lullaby Music"),
         ListenModel(name: "hush-little-baby", image: "cartoon3", shownName: "Hush Little Baby"),
-        ListenModel(name: "lavenders-blue", image: "cartoon2", shownName: "Lavenders"),
-        ListenModel(name: "mozart-minuet", image: "cartoon1", shownName: "Mozart Minuet"),
-        ListenModel(name: "mozart-piano-Sonata", image: "cartoon3", shownName: "Mozart Piano Sonata"),
-        ListenModel(name: "mozart-serenade", image: "cartoon2", shownName: "Mozart Serenade"),
-        ListenModel(name: "twinkle-twinkle-little-star", image: "cartoon1", shownName: "Twinkle Little Star"),
+        ListenModel(name: "lavenders-blue", image: "cartoon4", shownName: "Lavenders"),
+        ListenModel(name: "mozart-minuet", image: "cartoon5", shownName: "Mozart Minuet"),
+        ListenModel(name: "mozart-piano-Sonata", image: "cartoon6", shownName: "Mozart Piano Sonata"),
+        ListenModel(name: "mozart-serenade", image: "cartoon1", shownName: "Mozart Serenade"),
+        ListenModel(name: "twinkle-twinkle-little-star", image: "cartoon2", shownName: "Twinkle Little Star"),
     ]
     public var rangeOfTime = [0.0,300.0,600.0,900.0,1200.0,1500.0,1800.0,2100.0,2400.0,2700.0,3000.0]
     public var rangeIndex = 0

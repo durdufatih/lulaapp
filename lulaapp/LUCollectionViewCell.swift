@@ -9,6 +9,9 @@ import UIKit
 
 class LUCollectionViewCell: UICollectionViewCell {
     
+    
     @IBOutlet weak var lulabyImage: UIImageView!
     @IBOutlet weak var lulabyTitle: UILabel!
+
+    
 }
